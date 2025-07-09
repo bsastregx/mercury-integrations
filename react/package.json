@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "npm run build.css && vite",
     "build": "npm run build.css && tsc -b && vite build",
+    "build.css": "mercury -i=/assets/icons/ -f=/assets/fonts/ --outDir=src/assets/mercury-bundles --avoid-hash=base/base,resets/box-sizing",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build.css": "mercury -i=/assets/icons/ -f=/assets/fonts/ --outDir=src/assets/mercury-css --avoid-hash=base/base,resets/box-sizing"
+    "generate.wrappers": "npx chameleon-generate-react ./src/chameleon-components"
   },
   "dependencies": {
     "react": "^19.1.0",

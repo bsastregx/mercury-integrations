@@ -40,5 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-src/assets/mercury-css
+src/assets/mercury-bundles
 src/chameleon-components

@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
 
-    <link rel="stylesheet" href="./src/assets/mercury-css/base/base.css" />
+    <link rel="stylesheet" href="./src/assets/mercury-bundles/base/base.css" />
 
     <script type="module">
       import { registryProperty } from "@genexus/chameleon-controls-library/dist/collection";
       import { setBundleMapping } from "@genexus/mercury/bundles.js";
       import { getImagePathCallbackDefinitions } from "@genexus/mercury/assets-manager.js";
       import { registerMercury } from "@genexus/mercury/register-mercury.js";
-      import { bundleToHashMappings } from "./src/assets/mercury-css/bundle-to-hash-mappings";
+      import { bundleToHashMappings } from "./src/assets/mercury-bundles/bundle-to-hash-mappings";
 
       setBundleMapping(bundleToHashMappings);
 

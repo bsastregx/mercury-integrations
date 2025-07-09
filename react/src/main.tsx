@@ -4,13 +4,10 @@ import "./index.css";
 
 import { ChTheme } from "./chameleon-components";
 
-// Mercury (mapeo primero)
-// import { bundleToHashMappings } from "./assets/mercury-css/bundle-to-hash-mappings";
-
 // React App (último)
 import App from "./App.tsx";
 
-import { bundleToHashMappings } from "./assets/mercury-css/bundle-to-hash-mappings.ts";
+import { bundleToHashMappings } from "./assets/mercury-bundles/bundle-to-hash-mappings";
 import { type ThemeModel } from "@genexus/chameleon-controls-library";
 
 const mercuryIconsBundle: ThemeModel = [

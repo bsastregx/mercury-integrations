@@ -1,13 +1,17 @@
 "use client";
 
-import { getIconPath } from "@genexus/mercury/assets-manager.js";
-import { getBundles } from "@genexus/mercury/bundles.js";
-import { ChTheme, ChImage } from "../chameleon-components";
+import type { ThemeModel } from "@genexus/chameleon-controls-library";
 
-const CSS_BUNDLES = getBundles(
-  ["components/button", "components/icon"],
-  "/assets/css/"
-);
+import { getIconPath } from "@genexus/mercury/assets-manager.js";
+import { getCssBundles } from "@/common/constants";
+import { ChTheme, ChImage } from "@/chameleon-components";
+
+const CSS_THEMES: ThemeModel = getCssBundles([
+  "components/button",
+  "components/icon",
+]);
+
+console.log("CSS_THEMES", CSS_THEMES);
 
 const ICON = getIconPath({
   category: "system",
@@ -17,7 +21,7 @@ const ICON = getIconPath({
 
 export const CustomDialog = () => (
   <>
-    <ChTheme model={CSS_BUNDLES}></ChTheme>
+    <ChTheme model={CSS_THEMES}></ChTheme>
     <button className="button-primary button-icon-and-text" type="button">
       <ChImage className="icon-md" src={ICON} type="mask" />
       Caption

@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
               to: "static/fonts",
             },
             {
-              from: "src/assets/mercury-css",
+              from: "./src/assets/mercury-bundles",
               to: "static/css",
             },
           ],

@@ -1,30 +1,30 @@
 {
-  "name": "react",
+  "name": "nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run build.css && next dev --turbopack",
-    "build": "npm run build.css next build",
-    "start": "npm run build.css next start",
+    "dev": "npm run build.css && next dev",
+    "build": "npm run build.css && next build",
+    "start": "npm run build.css && next start",
     "lint": "next lint",
-    "build.css": "mercury -i=/_next/static/icons/ -f=/_next/static/fonts/ --outDir=src/assets/mercury-css/ --avoid-hash=base/base,resets/box-sizing,base/icons",
+    "build.css": "mercury -i=/_next/static/icons/ -f=/_next/static/fonts/ --outDir=src/assets/mercury-bundles/ --avoid-hash=base/base,resets/box-sizing,base/icons",
     "generate.wrappers": "npx chameleon-generate-react ./src/chameleon-components"
   },
   "dependencies": {
     "@genexus/chameleon-controls-library": "^6.16.0",
     "@genexus/mercury": "^0.26.0",
-    "next": "15.3.5",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "next": "15.3.5"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
+    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "copy-webpack-plugin": "^13.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
-    "typescript": "^5"
+    "@eslint/eslintrc": "^3",
+    "copy-webpack-plugin": "~12.0.2"
   }
 }
