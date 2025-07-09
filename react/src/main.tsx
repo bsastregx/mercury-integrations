@@ -2,31 +2,27 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 
+import { ChTheme } from "./chameleon-components";
+
 // Mercury (mapeo primero)
-import { setBundleMapping } from "@genexus/mercury";
-import { bundleToHashMappings } from "./assets/mercury-css/bundle-to-hash-mappings";
-setBundleMapping(bundleToHashMappings);
-
-// Luego el resto de Mercury
-import { registerMercury } from "@genexus/mercury";
-import { getImagePathCallbackDefinitions } from "@genexus/mercury";
-
-// Chameleon
-import { registryProperty } from "@genexus/chameleon-controls-library/dist/collection";
-import { defineCustomElements } from "@genexus/chameleon-controls-library/loader";
+// import { bundleToHashMappings } from "./assets/mercury-css/bundle-to-hash-mappings";
 
 // React App (último)
 import App from "./App.tsx";
 
-// Configuración
-registerMercury();
-registryProperty("getImagePathCallback", getImagePathCallbackDefinitions);
-defineCustomElements(window);
+import { bundleToHashMappings } from "./assets/mercury-css/bundle-to-hash-mappings.ts";
+import { type ThemeModel } from "@genexus/chameleon-controls-library";
 
-import "./assets/mercury-css/base/base.css";
+const mercuryIconsBundle: ThemeModel = [
+  {
+    name: "mercury/base/icons",
+    url: "/assets/css/" + `${bundleToHashMappings["base/icons"]}.css`,
+  },
+];
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <ChTheme model={mercuryIconsBundle}></ChTheme>
     <App />
   </StrictMode>
 );
