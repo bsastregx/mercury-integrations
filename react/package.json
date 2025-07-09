@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npm run build.scss && vite",
-    "build": "npm run build.scss && tsc -b && vite build",
+    "dev": "npm run build.css && vite",
+    "build": "npm run build.css && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build.scss": "mercury --i=/assets/icons/ --f=/assets/fonts/ --outDir=./src/assets/mercury-css/"
+    "build.css": "mercury -i=/assets/icons/ -f=/assets/fonts/ --outDir=src/assets/mercury-css --avoid-hash=base/base,resets/box-sizing"
   },
   "dependencies": {
     "react": "^19.1.0",

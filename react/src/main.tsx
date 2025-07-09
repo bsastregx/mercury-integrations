@@ -23,7 +23,7 @@ registerMercury();
 registryProperty("getImagePathCallback", getImagePathCallbackDefinitions);
 defineCustomElements(window);
 
-import "./assets/mercury-css/base/base-bfed1d7bde12a786.css";
+import "./assets/mercury-css/base/base.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
