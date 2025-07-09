@@ -1,25 +1,29 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
 
-// Mercury
+// Mercury (mapeo primero)
 import { setBundleMapping } from "@genexus/mercury";
 import { bundleToHashMappings } from "./assets/mercury-css/bundle-to-hash-mappings";
-import { getImagePathCallbackDefinitions } from "@genexus/mercury";
+setBundleMapping(bundleToHashMappings);
+
+// Luego el resto de Mercury
 import { registerMercury } from "@genexus/mercury";
+import { getImagePathCallbackDefinitions } from "@genexus/mercury";
 
 // Chameleon
 import { registryProperty } from "@genexus/chameleon-controls-library/dist/collection";
 import { defineCustomElements } from "@genexus/chameleon-controls-library/loader";
 
+// React App (último)
+import App from "./App.tsx";
+
+// Configuración
 registerMercury();
-setBundleMapping(bundleToHashMappings);
-// Register the default value for the getImagePathCallback property in all Chameleon
-// components. This implementation allows us to remove the need for binding the
-// getImagePathCallback property in all Chameleon controls that must render icons.
 registryProperty("getImagePathCallback", getImagePathCallbackDefinitions);
 defineCustomElements(window);
+
+import "./assets/mercury-css/base/base-bfed1d7bde12a786.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
