@@ -1,6 +1,8 @@
+"use client";
+
 import { getIconPath } from "@genexus/mercury/assets-manager.js";
 import { getBundles } from "@genexus/mercury/bundles.js";
-import { ChTheme, ChImage } from "../../chameleon-components";
+import { ChTheme, ChImage } from "../chameleon-components";
 
 const CSS_BUNDLES = getBundles(
   ["components/button", "components/icon"],

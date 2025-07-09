@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:angular": "node dist/angular/server/server.mjs",
-    "build.scss": "mercury --i=/assets/icons/ --f=/assets/fonts/ --outDir=./src/assets/mercury-css/"
+    "build.scss": "mercury -i=/assets/icons/ -f=/assets/fonts/ -outDir=./src/assets/mercury-css/"
   },
   "prettier": {
     "overrides": [

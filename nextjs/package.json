@@ -3,27 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "dev": "npm run build.css && next dev --turbopack",
+    "build": "npm run build.css next build",
+    "start": "npm run build.css next start",
     "lint": "next lint",
-    "build.scss": "mercury --i=/assets/icons/ --f=/assets/fonts/ --outDir=./src/assets/mercury-css/"
+    "build.css": "mercury -i=/_next/static/icons/ -f=/_next/static/fonts/ --outDir=src/assets/mercury-css/ --avoid-hash=base/base,resets/box-sizing,base/icons",
+    "generate.wrappers": "npx chameleon-generate-react ./src/chameleon-components"
   },
   "dependencies": {
+    "@genexus/chameleon-controls-library": "^6.16.0",
+    "@genexus/mercury": "^0.26.0",
     "next": "15.3.5",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "@genexus/chameleon-controls-library": "^6.16.0",
-    "@genexus/mercury": "^0.26.0"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "copy-webpack-plugin": "^13.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
-    "typescript": "^5",
-    "vite-plugin-static-copy": "^3.1.0"
+    "typescript": "^5"
   }
 }
