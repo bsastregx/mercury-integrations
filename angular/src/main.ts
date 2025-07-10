@@ -4,7 +4,7 @@ import { App } from "./app/app";
 
 // Mercury
 import { setBundleMapping } from "@genexus/mercury";
-import { bundleToHashMappings } from "./assets/mercury-css/bundle-to-hash-mappings";
+import { bundleToHashMappings } from "./assets/mercury-bundles/bundle-to-hash-mappings";
 import { getImagePathCallbackDefinitions } from "@genexus/mercury";
 import { registerMercury } from "@genexus/mercury";
 

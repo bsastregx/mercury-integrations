@@ -3,7 +3,7 @@ import { RouterOutlet } from "@angular/router";
 import { CustomDialogComponent } from "./custom-dialog/custom-dialog";
 
 import { ThemeModel } from "@genexus/chameleon-controls-library";
-import { bundleToHashMappings } from "../assets/mercury-css/bundle-to-hash-mappings";
+import { bundleToHashMappings } from "../assets/mercury-bundles/bundle-to-hash-mappings";
 @Component({
   selector: "app-root",
   standalone: true,

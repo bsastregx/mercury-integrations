@@ -28,7 +28,7 @@
               },
               {
                 "glob": "**/*",
-                "input": "./src/assets/mercury-css/",
+                "input": "./src/assets/mercury-bundles/",
                 "output": "/assets/css/"
               },
               {

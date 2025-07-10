@@ -1,6 +1,6 @@
 export const bundleToHashMappings = {
   "all": "all-5623e5a4aaceb8ac",
-  "base/base": "base/base-bfed1d7bde12a786",
+  "base/base": "base/base",
   "base/base-globant": "base/base-globant-2e35f235ecacc6c3",
   "base/icons": "base/icons-137edfdbd4d60c97",
   "chameleon/scrollbar": "chameleon/scrollbar-b02c940141ff867d",
@@ -32,7 +32,7 @@ export const bundleToHashMappings = {
   "components/tooltip": "components/tooltip-204d378f6585b618",
   "components/tree-view": "components/tree-view-ea3ad5c351ecde82",
   "components/widget": "components/widget-10f45f6bd7c95f13",
-  "resets/box-sizing": "resets/box-sizing-95e24598cd3383b6",
+  "resets/box-sizing": "resets/box-sizing",
   "utils/elevation": "utils/elevation-603aa1ef64d9402d",
   "utils/form": "utils/form-9758a0dba7aa0a87",
   "utils/form--full": "utils/form--full-a4983855f75e8828",

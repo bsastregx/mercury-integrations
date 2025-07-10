@@ -1,30 +1,48 @@
 import { Config } from '@stencil/core';
-import { CopyTask } from '@stencil/core/internal';
+import cpy from 'cpy';
 
-const copyTasks = [
-  // The following doesn't work, as it also copies '/assets/mercury-bundles/' folders.
-  // {
-  //   src: './assets/mercury-bundles/',
-  //   dest: 'assets/css',
-  //   keepDirStructure: true,
-  // },
-  // The following doesn't work, as it flattens all the files inside 'mercury-bundles'.
-  // {
-  //   src: './assets/mercury-bundles/',
-  //   dest: 'assets/css',
-  //   keepDirStructure: true,
-  // },
-  // Solution to copy mercury-bundles contents into 'www/assets/css' is using a custom script
-  // on package.json. At the time of writting is named "mercury-bundles-www".
-  {
-    src: '../node_modules/@genexus/mercury/dist/assets/fonts/',
-    dest: 'assets/fonts/',
-  },
-  {
-    src: '../node_modules/@genexus/mercury/dist/assets/icons/',
-    dest: 'assets/icons',
-  },
-] as const satisfies CopyTask[];
+/**
+ * Custom plugin to copy the contents of the 'src/assets/mercury-bundles' folder
+ * into 'www/assets/css/' **after** the build process completes.
+ *
+ * This function exists because Stencil's native CopyTasks options do not meet the following requirements:
+ *
+ * // The following doesn't work, as it copies the full path 'assets/mercury-bundles' inside the destination:
+ * // {
+ * //   src: './assets/mercury-bundles/',
+ * //   dest: 'assets/css',
+ * //   keepDirStructure: true,
+ * // },
+ *
+ * // The following doesn't work, as it flattens all the files inside 'mercury-bundles':
+ * // {
+ * //   src: './assets/mercury-bundles/',
+ * //   dest: 'assets/css',
+ * //   keepDirStructure: false,
+ * // },
+ *
+ * Therefore, to copy only the contents of 'mercury-bundles' directly into 'www/assets/css',
+ * this function is implemented as a custom plugin executed after the build, ensuring
+ * that the destination folder exists and only the necessary files are copied.
+ */
+function copyAssetsAfterBuild(): Required<Config>['plugins'][number] {
+  return {
+    name: 'copy-folder-content',
+    async buildEnd() {
+      try {
+        await Promise.all([
+          cpy('src/assets/mercury-bundles/**', 'www/assets/css', { overwrite: true }),
+          cpy('node_modules/@genexus/mercury/dist/assets/fonts/**', 'www/assets/fonts', { overwrite: true }),
+          cpy('node_modules/@genexus/mercury/dist/assets/icons/**', 'www/assets/icons', { overwrite: true }),
+        ]);
+
+        console.log('Todas las carpetas copiadas correctamente.');
+      } catch (error) {
+        console.error('Error copiando carpetas:', error);
+      }
+    },
+  };
+}
 
 export const config: Config = {
   namespace: 'mercury-stenciljs',
@@ -33,31 +51,11 @@ export const config: Config = {
   taskQueue: 'async',
   outputTargets: [
     {
-      type: 'dist',
-      copy: copyTasks,
-    },
-    {
       type: 'www',
-      // comment the following line to disable service workers in production
       serviceWorker: null,
-      copy: copyTasks,
-      baseUrl: 'https://myapp.local/',
     },
   ],
   plugins: [
-    {
-      name: 'mercury-bundles-copier',
-      async buildStart() {
-        const { cpSync, mkdirSync } = await import('node:fs');
-
-        try {
-          mkdirSync('./www/assets/css', { recursive: true });
-          cpSync('./src/assets/mercury-bundles', './www/assets/css', { recursive: true });
-          console.log('✓ Mercury bundles copied to www/assets/css');
-        } catch (error) {
-          console.error('Failed to copy mercury bundles:', error);
-        }
-      },
-    },
+    copyAssetsAfterBuild(), // <-- Aquí llamas a la función que retorna el plugin
   ],
 };
