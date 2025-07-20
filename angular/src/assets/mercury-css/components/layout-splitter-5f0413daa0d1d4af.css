@@ -1,0 +1,1 @@
+.layout-splitter::part(bar){color:var(--mer-border-color__on-surface)}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
