@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Mercury & Chameleon
+/src/assets/mercury-css

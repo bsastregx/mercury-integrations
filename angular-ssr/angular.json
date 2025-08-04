@@ -19,11 +19,24 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/mercury-css/",
+                "output": "/assets/css/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@genexus/mercury/dist/assets/fonts",
+                "output": "/assets/fonts/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@genexus/mercury/dist/assets/icons",
+                "output": "/assets/icons/"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "styles": ["src/styles.css"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -79,9 +92,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.css"]
           }
         }
       }
