@@ -4,12 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "npm run build.css && vite",
+    "build": "npm run build.css && tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build.css": "mercury --i=/assets/icons/ --f=/assets/fonts/ --outDir=src/assets/mercury-css/",
+    "build.chameleon": "chameleon-generate-react ./src/chameleon-components"
   },
   "dependencies": {
+    "@genexus/chameleon-controls-library": "^6.18.1",
+    "@genexus/mercury": "^0.26.1-next.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
@@ -24,6 +28,7 @@
     "globals": "^16.3.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
-    "vite": "^7.0.4"
+    "vite": "^7.0.4",
+    "vite-plugin-static-copy": "^3.1.1"
   }
 }
